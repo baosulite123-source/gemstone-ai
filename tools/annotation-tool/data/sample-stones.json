@@ -1,0 +1,138 @@
+[
+  {
+    "id": "RB-2024-001",
+    "lotId": "LOT-A1",
+    "variety": "ruby",
+    "weight": 3.42,
+    "dimensions": "8.1 x 6.3 x 5.2",
+    "shape": "rough_crystal",
+    "origin": "Mogok, Myanmar",
+    "treatment": "none",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "D65", "angle": "side"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"},
+      {"url": "", "lighting": "cross_polarized", "angle": "top"},
+      {"url": "", "lighting": "UV", "angle": "top"}
+    ]
+  },
+  {
+    "id": "RB-2024-002",
+    "lotId": "LOT-A1",
+    "variety": "ruby",
+    "weight": 1.87,
+    "dimensions": "6.2 x 5.1 x 4.0",
+    "shape": "waterworn",
+    "origin": "Mogok, Myanmar",
+    "treatment": "none",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"},
+      {"url": "", "lighting": "UV", "angle": "top"}
+    ]
+  },
+  {
+    "id": "RB-2024-003",
+    "lotId": "LOT-A2",
+    "variety": "ruby",
+    "weight": 5.10,
+    "dimensions": "10.3 x 8.7 x 6.1",
+    "shape": "tabular",
+    "origin": "Luc Yen, Vietnam",
+    "treatment": "heated",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "D65", "angle": "side"},
+      {"url": "", "lighting": "D65", "angle": "bottom"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "cross_polarized", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"}
+    ]
+  },
+  {
+    "id": "BS-2024-001",
+    "lotId": "LOT-B1",
+    "variety": "blue_sapphire",
+    "weight": 4.21,
+    "dimensions": "9.0 x 7.5 x 5.8",
+    "shape": "rough_crystal",
+    "origin": "Ratnapura, Sri Lanka",
+    "treatment": "none",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "D65", "angle": "side"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"},
+      {"url": "", "lighting": "cross_polarized", "angle": "top"},
+      {"url": "", "lighting": "UV", "angle": "top"}
+    ]
+  },
+  {
+    "id": "BS-2024-002",
+    "lotId": "LOT-B1",
+    "variety": "blue_sapphire",
+    "weight": 2.93,
+    "dimensions": "7.8 x 6.2 x 4.9",
+    "shape": "barrel",
+    "origin": "Kashmir, India",
+    "treatment": "none",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"},
+      {"url": "", "lighting": "cross_polarized", "angle": "top"}
+    ]
+  },
+  {
+    "id": "BS-2024-003",
+    "lotId": "LOT-B2",
+    "variety": "blue_sapphire",
+    "weight": 6.78,
+    "dimensions": "11.2 x 9.1 x 7.3",
+    "shape": "rough_crystal",
+    "origin": "Pailin, Cambodia",
+    "treatment": "heated",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "D65", "angle": "side"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"},
+      {"url": "", "lighting": "UV", "angle": "top"}
+    ]
+  },
+  {
+    "id": "RB-2024-004",
+    "lotId": "LOT-A3",
+    "variety": "ruby",
+    "weight": 0.95,
+    "dimensions": "5.1 x 4.2 x 3.3",
+    "shape": "waterworn",
+    "origin": "Montepuez, Mozambique",
+    "treatment": "none",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"}
+    ]
+  },
+  {
+    "id": "BS-2024-004",
+    "lotId": "LOT-B3",
+    "variety": "blue_sapphire",
+    "weight": 3.55,
+    "dimensions": "8.4 x 7.0 x 5.5",
+    "shape": "rough_crystal",
+    "origin": "Ilakaka, Madagascar",
+    "treatment": "none",
+    "images": [
+      {"url": "", "lighting": "D65", "angle": "top"},
+      {"url": "", "lighting": "D65", "angle": "side"},
+      {"url": "", "lighting": "transmitted", "angle": "top"},
+      {"url": "", "lighting": "cross_polarized", "angle": "top"},
+      {"url": "", "lighting": "darkfield", "angle": "top"},
+      {"url": "", "lighting": "UV", "angle": "top"}
+    ]
+  }
+]

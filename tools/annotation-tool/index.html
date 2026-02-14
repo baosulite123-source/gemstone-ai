@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GemGrade — Rough Stone Annotation Tool</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <header id="header">
+    <h1>💎 <span class="gem">Gem</span>Grade <span style="color:var(--text-muted);font-size:11px;font-weight:400;">Rough Stone Grading</span></h1>
+    <div class="header-actions">
+      <div class="progress" id="progress-text">0 / 0 graded</div>
+      <button class="btn btn-sm" id="btn-annotate">✏️ Annotate</button>
+      <button class="btn btn-sm" id="btn-import">📂 Import</button>
+      <button class="btn btn-sm" id="btn-export">📦 Export</button>
+      <input type="file" id="file-import" class="hidden-input" accept=".json">
+    </div>
+  </header>
+
+  <!-- Left Sidebar: Stone Browser -->
+  <aside id="stone-browser">
+    <div class="sb-header">
+      <input type="text" id="search-input" placeholder="Search stones...">
+      <div class="filter-row">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="ruby">Ruby</button>
+        <button class="chip" data-filter="blue_sapphire">Sapphire</button>
+      </div>
+    </div>
+    <div id="stone-list"></div>
+  </aside>
+
+  <!-- Main: Image Viewer -->
+  <main id="viewer-area">
+    <div id="stone-metadata"></div>
+    <div id="image-grid">
+      <div class="empty-state"><div class="icon">💎</div><p>Select a stone to view images</p></div>
+    </div>
+  </main>
+
+  <!-- Right Sidebar: Grading Panel -->
+  <aside id="grading-panel">
+    <!-- Color Grading -->
+    <div class="panel-section">
+      <h3>🎨 Color Grading</h3>
+      <div class="form-group">
+        <label>Hue</label>
+        <select id="hue">
+          <option value="">— Select —</option>
+          <option value="R">R — Red</option>
+          <option value="pR">pR — Pinkish Red</option>
+          <option value="stR">stR — Strongly Pinkish Red</option>
+          <option value="P">P — Pink</option>
+          <option value="pB">pB — Purplish Blue</option>
+          <option value="B">B — Blue</option>
+          <option value="vB">vB — Violetish Blue</option>
+          <option value="gB">gB — Greenish Blue</option>
+        </select>
+      </div>
+      <div class="form-group slider-group">
+        <label>Saturation</label>
+        <input type="range" id="saturation" min="1" max="6" value="3" step="1">
+        <div class="slider-value" id="sat-value">3 — Very slightly grayish</div>
+        <div class="slider-labels"><span>Grayish</span><span>Vivid</span></div>
+      </div>
+      <div class="form-group slider-group">
+        <label>Tone</label>
+        <input type="range" id="tone" min="1" max="7" value="4" step="1">
+        <div class="slider-value" id="tone-value">4 — Medium</div>
+        <div class="slider-labels"><span>Very light</span><span>Very dark</span></div>
+      </div>
+      <div class="form-group">
+        <label>Color Distribution</label>
+        <div class="radio-group">
+          <label><input type="radio" name="color-distribution" value="uniform"><span>Uniform</span></label>
+          <label><input type="radio" name="color-distribution" value="zoned"><span>Zoned</span></label>
+          <label><input type="radio" name="color-distribution" value="patchy"><span>Patchy</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Designation</label>
+        <div class="radio-group">
+          <label><input type="radio" name="special-designation" value="none" checked><span>None</span></label>
+          <label><input type="radio" name="special-designation" value="pigeon_blood"><span>🔴 Pigeon Blood</span></label>
+          <label><input type="radio" name="special-designation" value="royal_blue"><span>🔵 Royal Blue</span></label>
+          <label><input type="radio" name="special-designation" value="cornflower_blue"><span>💙 Cornflower</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clarity Grading -->
+    <div class="panel-section">
+      <h3>🔍 Clarity Grading</h3>
+      <div class="form-group">
+        <label>Transparency</label>
+        <div class="radio-group">
+          <label><input type="radio" name="transparency" value="transparent"><span>Transparent</span></label>
+          <label><input type="radio" name="transparency" value="semi-transparent"><span>Semi-transparent</span></label>
+          <label><input type="radio" name="transparency" value="translucent"><span>Translucent</span></label>
+          <label><input type="radio" name="transparency" value="opaque"><span>Opaque</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Inclusion Types</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="inclusion-types" value="silk"><span>Silk</span></label>
+          <label><input type="checkbox" name="inclusion-types" value="rutile"><span>Rutile</span></label>
+          <label><input type="checkbox" name="inclusion-types" value="crystal"><span>Crystal</span></label>
+          <label><input type="checkbox" name="inclusion-types" value="feather"><span>Feather</span></label>
+          <label><input type="checkbox" name="inclusion-types" value="cavity"><span>Cavity</span></label>
+          <label><input type="checkbox" name="inclusion-types" value="fingerprint"><span>Fingerprint</span></label>
+          <label><input type="checkbox" name="inclusion-types" value="other"><span>Other</span></label>
+        </div>
+      </div>
+      <div class="form-group slider-group">
+        <label>Inclusion Density</label>
+        <input type="range" id="inclusion-density" min="1" max="5" value="1" step="1">
+        <div class="slider-value" id="density-value">1 — Insignificant</div>
+        <div class="slider-labels"><span>Insignificant</span><span>Severe</span></div>
+      </div>
+      <div class="form-group">
+        <label>Inclusion Location</label>
+        <div class="radio-group">
+          <label><input type="radio" name="inclusion-location" value="center"><span>Center</span></label>
+          <label><input type="radio" name="inclusion-location" value="peripheral"><span>Peripheral</span></label>
+          <label><input type="radio" name="inclusion-location" value="surface"><span>Surface</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Fracture Risk</label>
+        <div class="radio-group">
+          <label><input type="radio" name="fracture-risk" value="low"><span>Low</span></label>
+          <label><input type="radio" name="fracture-risk" value="medium"><span>Medium</span></label>
+          <label><input type="radio" name="fracture-risk" value="high"><span>High</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="panel-section">
+      <h3>📝 Notes</h3>
+      <textarea id="grading-notes" rows="3" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-input);color:var(--text-primary);font-size:12px;resize:vertical;font-family:inherit;" placeholder="Additional observations..."></textarea>
+    </div>
+
+    <!-- Actions -->
+    <div class="grading-actions">
+      <button class="btn btn-save" id="btn-save" style="width:100%;justify-content:center;">💾 Save Grade <kbd>Enter</kbd></button>
+      <div class="nav-row">
+        <button class="btn" id="btn-prev">◀ Prev <kbd>←</kbd></button>
+        <button class="btn" id="btn-skip">Skip <kbd>S</kbd></button>
+        <button class="btn" id="btn-next">Next ▶ <kbd>→</kbd></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Lightbox -->
+  <div id="lightbox"></div>
+
+  <!-- Status Bar -->
+  <footer id="status-bar">
+    <div class="shortcuts">
+      <span><kbd>←</kbd><kbd>→</kbd> Navigate</span>
+      <span><kbd>Enter</kbd> Save</span>
+      <span><kbd>S</kbd> Skip</span>
+      <span><kbd>Esc</kbd> Close / Cancel</span>
+    </div>
+    <div>GemGrade v1.0 — Rough Stone Grading Tool</div>
+  </footer>
+
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/annotations.js"></script>
+<script src="js/viewer.js"></script>
+<script src="js/grading.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
